@@ -1,0 +1,17 @@
+{
+    "name": "andor/heroes-and-monsters3",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Andor\\HeroesAndMonsters3\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Ranagol",
+            "email": "andorhorvat@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
