@@ -1,2 +1,5 @@
 Game started
 Game started
+No weapon found for this hero, in his bag!
+No weapon found for this hero, in his bag!
+Maximum number of weapons in bag is two weapons!
