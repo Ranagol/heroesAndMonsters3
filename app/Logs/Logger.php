@@ -1,15 +1,36 @@
 <?php
 
-namespace Andor\HeroesAndMonsters3\logs;
+namespace App\Logs;
 
 class Logger {
-    private static $instance;// 1-Make a private static $instance property. This will store the instance of this class.
 
-    private function __construct() {//2-make the __construct private. This way nobody will be able to do $counter = new Counter();
-        
-    }
+    /**
+     * Path for the log file.
+     *
+     * @var string
+     */
+    private static $pathForLogs = __DIR__ . '/logs.txt';
 
-    static function getInstance() {//3-cre-ate a static creation method. If there is no $counter object already in the $instance, it will create one and return it. If there is alredy a $counter object in the $instance, then it will simply return this $counter.
+    /**
+     * This will store the instance of this class.
+     *
+     * @var Logger|null
+     */
+    private static ?Logger $instance = null;
+
+    /**
+     * make the __construct private, because this way nobody will be able to initialize this class 
+     * from outside.
+     */
+    private function __construct() {}
+
+    /**
+     * If the object is not created yet, create it and return it. Otherwise, return the existing one.
+     *
+     * @return Logger
+     */
+    static function getInstance(): Logger
+    {
         if (self::$instance == null) {
             self::$instance = new Logger();
         }
@@ -19,6 +40,17 @@ class Logger {
 
     public function log(String $text): void
     {
+        self::displayOnMonitor($text);
+        self::writeToFile($text);
+    }
+
+    private function displayOnMonitor(String $text): void
+    {
         echo '<br>' . $text . '<br>';
+    }
+
+    private function writeToFile(String $text): void
+    {
+        file_put_contents(self::$pathForLogs, $text . PHP_EOL, FILE_APPEND);
     }
 }

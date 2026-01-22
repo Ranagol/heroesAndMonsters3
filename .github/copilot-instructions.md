@@ -8,30 +8,30 @@ This is a PHP OOP exercise project (from Vivify Ideas) demonstrating design patt
 ## Architecture & Structure
 
 ### Namespace Convention
-- Follows PSR-4 autoloading: `Andor\HeroesAndMonsters3\` maps to `src/`
-- Example: Classes in `src/logs/` use namespace `Andor\HeroesAndMonsters3\logs`
-- Example: Classes in `src/classes/` use namespace `Andor\HeroesAndMonsters3\classes`
-- See [Logger.php](../src/logs/Logger.php) for reference implementation
+- Follows PSR-4 autoloading: `App\` maps to `app/`
+- Example: Classes in `app/Logs/` use namespace `App\Logs`
+- Example: Classes in `app/Classes/` use namespace `App\Classes`
+- See [Logger.php](../app/Logs/Logger.php) for reference implementation
 
 ### Directory Layout
 ```
-src/
-  classes/      - Game entities (heroes, monsters) - currently empty, to be populated
-  exceptions/   - Custom exception classes - currently empty
-  interfaces/   - Contracts for game components - currently empty
-  logs/         - Logging infrastructure (Logger.php)
+app/
+  Classes/      - Game entities (heroes, monsters) - currently empty, to be populated
+  Exceptions/   - Custom exception classes - currently empty
+  Interfaces/   - Contracts for game components - currently empty
+  Logs/         - Logging infrastructure (Logger.php)
 ```
 
 ## Design Patterns in Use
 
 ### Singleton Pattern (Logger)
-- [Logger.php](../src/logs/Logger.php) implements classic Singleton:
+- [Logger.php](../app/Logs/Logger.php) implements classic Singleton:
   - Private static `$instance` property
   - Private constructor prevents direct instantiation
   - Static `getInstance()` method for access
 - Usage: 
   ```php
-  use Andor\HeroesAndMonsters3\logs\Logger;
+  use App\Logs\Logger;
   Logger::getInstance()->log("message");
   ```
 - Logger outputs directly to HTML with `<br>` tags (echo-based, not file-based)
@@ -49,18 +49,16 @@ src/
 - No explicit exception handling visible yet (exceptions directory empty)
 
 ## Critical Gaps (For AI Awareness)
-- No entry point file (index.php) exists yet
 - Class directories are empty - classes need to be created following the namespace pattern in Logger
 - No test files present
-- No documentation on game rules or entity relationships
 
 ## Game Requirements (from Zadatak.txt)
 
-### Heroes (src/classes/)
+### Heroes (app/Classes/)
 1. **Wizard (Čarobnjak)**: 150 health
 2. **Swordsman (Mačevalac)**: 100 health
 
-### Weapons (src/classes/)
+### Weapons (app/Classes/)
 - **Sword (Mač)**: Only swordsman can use (throw exception for wizard)
 - **Spear (Koplje)**: Only swordsman can use (throw exception for wizard)
 - **Spell (Čarolija)**: Only wizard can learn/use
@@ -72,7 +70,7 @@ src/
 - Throw exception if trying to add 3rd weapon to backpack
 - When hero drops weapon, another hero can pick it up; first hero takes next weapon from backpack
 
-### Monsters (src/classes/)
+### Monsters (app/Classes/)
 1. **Dragon (Zmaj)**: 
    - Hit attack: 5 damage
    - Fire breath: 20 damage
@@ -103,7 +101,7 @@ Logger must output with these formats **in Serbian**:
 
 ## Required OOP Patterns
 1. **Inheritance**: Hero base class → Wizard/Swordsman subclasses
-2. **Singleton**: Logger (already implemented in [src/logs/Logger.php](../src/logs/Logger.php))
+2. **Singleton**: Logger (already implemented in [app/Logs/Logger.php](../app/Logs/Logger.php))
 3. **Polymorphism**: Monster attack methods, weapon damage calculation
 4. **Exception Handling**: 
    - Weapon restrictions (wizard cannot use sword/spear)
@@ -112,19 +110,19 @@ Logger must output with these formats **in Serbian**:
 5. **Optional**: Factory pattern (weapon/monster creation), Decorator (weapon enhancements)
 
 ## When Adding New Classes
-1. Place in appropriate `src/` subdirectory (classes/exceptions/interfaces)
-2. Use namespace format: `namespace Andor\HeroesAndMonsters3\{subdirectory};`
+1. Place in appropriate `app/` subdirectory (Classes/Exceptions/Interfaces/Logs)
+2. Use namespace format: `namespace App\{subdirectory};`
 3. Follow the Singleton pattern where appropriate (e.g., game state manager)
 4. Use Logger for output:
    ```php
-   use Andor\HeroesAndMonsters3\logs\Logger;
+   use App\Logs\Logger;
    Logger::getInstance()->log("status message");
    ```
 5. Remember to run `composer dump-autoload` after creating new files
 
 ## Suggested Class Structure
 ```
-src/classes/
+app/Classes/
   Hero.php (abstract base)
   Wizard.php (extends Hero)
   Swordsman.php (extends Hero)
@@ -134,12 +132,12 @@ src/classes/
   Dragon.php, Spider.php (extends Monster)
   Battle.php (combat simulator)
   
-src/exceptions/
+app/Exceptions/
   NoWeaponException.php
   InvalidWeaponException.php
   BackpackFullException.php
   
-src/interfaces/
+app/Interfaces/
   Attackable.php (for entities that can attack)
   Damageable.php (for entities that can take damage)
 ```
