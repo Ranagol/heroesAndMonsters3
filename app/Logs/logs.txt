@@ -1,5 +1,42 @@
 Game started
+A new App\Classes\GameObjects\GameObject has been created.
+A new App\Classes\Characters\Heroes\Warrior has been created.
+Warrior created
+Game ended
 Game started
-No weapon found for this hero, in his bag!
-No weapon found for this hero, in his bag!
-Maximum number of weapons in bag is two weapons!
+A new App\Classes\GameObjects\GameObject has been created.
+A new App\Classes\GameObjects\WeaponBag has been created.
+Game ended
+Game started
+A new App\Classes\GameObjects\GameObject has been created.
+A new App\Classes\Characters\Heroes\Warrior has been created.
+A new App\Classes\GameObjects\WeaponBag has been created.
+Game ended
+Game started
+A new GameObject has been created.
+A new Warrior has been created.
+A new WeaponBag has been created.
+Game ended
+Game started
+A new GameObject has been created.
+A new Warrior has been created.
+A new WeaponBag has been created.
+A new Wizard has been created.
+A new WeaponBag has been created.
+Game ended
+Game started
+A new GameObject has been created.
+A new Warrior has been created.
+A new Wizard has been created.
+Game ended
+Game started
+A new Warrior has been created.
+A new Wizard has been created.
+Game ended
+Game started
+A new Warrior has been created.
+A new Wizard has been created.
+A new Sword has been created.
+A new Lance has been created.
+A new Magic has been created.
+Game ended
