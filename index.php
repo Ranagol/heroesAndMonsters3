@@ -22,6 +22,9 @@ $sword = new Sword();
 $lance = new Lance();
 $magic = new Magic();
 
+$warrior->pickUpWeapon($sword);
+$warrior->pickUpWeapon($lance);
+
 
 
 // throw new \App\Exceptions\NoWeaponException();

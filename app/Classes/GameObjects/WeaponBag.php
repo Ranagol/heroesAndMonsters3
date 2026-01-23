@@ -7,6 +7,9 @@ use App\Exceptions\NoWeaponException;
 
 class WeaponBag extends GameObject {
 
+    /**
+     * @var array Weapon[]
+     */
     private array $weapons = [];
 
     private int $activeWeaponIndex = 0;
@@ -15,7 +18,7 @@ class WeaponBag extends GameObject {
 
     public function __construct()
     {
-        //this is deliberatly empty
+        //this is deliberatly empty, we don't want to log every WeaponBag creation
     }
 
     public function addWeapon(Weapon $weapon): void 
@@ -37,6 +40,12 @@ class WeaponBag extends GameObject {
         if (count($this->weapons) == 0) {
             throw new NoWeaponException();
         }
+        
+        /**
+         * This will reverse items in array. ['apple', 'orange'] will become ['orange', 'apple']
+         */
+        $this->weapons = array_reverse($this->weapons);
+
     }
 
 
