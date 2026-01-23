@@ -2,15 +2,20 @@
 
 namespace App\Classes\Characters\Heroes;
 
-use Andor\HeroesAndMonsters3\logs\Logger;
 use App\Classes\Characters\Heroes\Hero;
 use App\Classes\GameObjects\Magic;
+use App\Logs\Logger;
 
 class Wizard extends Hero {
 
     private int $health = 150;
 
     private Magic|null $magic = null;
+
+    public function __construct()
+    {
+        parent::__construct();
+    }
 
     public function learnMagic(Magic $magic): void
     {

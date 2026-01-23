@@ -10,7 +10,7 @@ class WeaponBag extends GameObject {
     /**
      * @var array Weapon[]
      */
-    private array $weapons = [];
+    public array $weapons = [];
 
     private int $activeWeaponIndex = 0;
 
@@ -45,9 +45,12 @@ class WeaponBag extends GameObject {
          * This will reverse items in array. ['apple', 'orange'] will become ['orange', 'apple']
          */
         $this->weapons = array_reverse($this->weapons);
-
     }
 
+    public function getWeapons(): array 
+    {
+        return $this->weapons;
+    }
 
 
 }

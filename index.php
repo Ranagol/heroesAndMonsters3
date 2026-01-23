@@ -24,14 +24,14 @@ $magic = new Magic();
 
 $warrior->pickUpWeapon($sword);
 $warrior->pickUpWeapon($lance);
+var_dump($warrior->showWeapons());
+
 
 
 
 // throw new \App\Exceptions\NoWeaponException();
 // throw new \App\Exceptions\MaxWeaponNrExceededException();
 
-// $logger = \App\Logs\Logger::getInstance();
-// $logger->log('Game started');
 
 
 Logger::getInstance()->log('Game ended');
