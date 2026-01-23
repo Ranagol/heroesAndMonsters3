@@ -23,6 +23,16 @@ class Wizard extends Hero {
         Logger::getInstance()->log("Wizard learned new magic.");
     }
 
+    public function castMagic(): void
+    {
+        if ($this->magic === null) {
+            Logger::getInstance()->log("Wizard has no magic to cast.");
+            return;
+        }
+
+        Logger::getInstance()->log("Wizard casts magic spell!");
+    }
+
     
 
 }

@@ -42,7 +42,12 @@ $warrior->pickUpWeapon($lance);
 // $droppedWeapon = $warrior->dropWeapon();
 // $warrior->showAllWeapons();
 
-
+/**
+ * Wizard 
+ */
+echo '<h2>Wizard actions</h2>';
+$wizard->learnMagic($magic);
+var_dump($wizard);
 
 
 
