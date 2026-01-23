@@ -10,7 +10,7 @@ use App\Logs\Logger;
 
 class Warrior extends Hero {
 
-    private int $health = 100;
+    protected int $health = 100;
 
     private string|null $heroClassName = null;
 
@@ -82,5 +82,6 @@ class Warrior extends Hero {
             return;
         }
     }
+
 
 }

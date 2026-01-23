@@ -22,7 +22,7 @@ class GameObject {
      *
      * @return string
      */
-    protected function getClassName(): string
+    public function getClassName(): string
     {
         return basename(str_replace('\\', '/', static::class));
     }

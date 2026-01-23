@@ -6,7 +6,7 @@ use App\Classes\GameObjects\GameObject;
 
 class Character extends GameObject {
 
-    private int $health;
+    protected int $health;
 
     public function getHealth(): int
     {
@@ -21,6 +21,11 @@ class Character extends GameObject {
     public function decreaseHealth(int $amount): void
     {
         $this->health -= $amount;
+    }
+
+    public function isAlive(): bool
+    {
+        return $this->health > 0;
     }
 
 }

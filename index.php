@@ -1,12 +1,18 @@
 <?php
 
-use App\Classes\GameObjects\GameObject;
-use App\Classes\GameObjects\Lance;
-use App\Logs\Logger;
-use App\Classes\GameObjects\Magic;
-use App\Classes\GameObjects\Sword;
 use App\Classes\Characters\Heroes\Warrior;
 use App\Classes\Characters\Heroes\Wizard;
+use App\Classes\Characters\Monsters\Dragon;
+use App\Classes\Characters\Monsters\Spider;
+use App\Classes\FightManager;
+use App\Classes\GameObjects\GameObject;
+use App\Classes\GameObjects\Lance;
+use App\Classes\GameObjects\Magic;
+use App\Classes\GameObjects\Sword;
+use App\Logs\Logger;
+
+
+
 
 require __DIR__ . '/vendor/autoload.php';
 
@@ -26,6 +32,9 @@ $lance = new Lance();
 $magic = new Magic();
 $sword2 = new Sword();
 
+$dragon = new Dragon();
+$spider = new Spider();
+
 /**
  * Warrior actions: picking up weapons, showing active weapon, switching weapon, dropping weapon
  */
@@ -43,12 +52,17 @@ $warrior->pickUpWeapon($lance);
 // $warrior->showAllWeapons();
 
 /**
- * Wizard 
+ * Wizard learns new magic
  */
 echo '<h2>Wizard actions</h2>';
 $wizard->learnMagic($magic);
-var_dump($wizard);
 
+/**
+ * Fight
+ */
+echo '<h2>The epic fight</h2>';
+$fightManager = new FightManager($warrior, $dragon);
+$fightManager->fight();
 
 
 

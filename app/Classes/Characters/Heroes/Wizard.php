@@ -8,7 +8,7 @@ use App\Logs\Logger;
 
 class Wizard extends Hero {
 
-    private int $health = 150;
+    protected int $health = 150;
 
     private Magic|null $magic = null;
 
