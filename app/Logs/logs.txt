@@ -419,3 +419,66 @@ Warrior's active weapon is a Sword
 Warrior has a Sword in the bag.
 Warrior has a Lance in the bag.
 Game ended
+Game started
+A new Warrior has been created.
+A new Wizard has been created.
+A new Sword has been created.
+A new Lance has been created.
+A new Magic has been created.
+A new Sword has been created.
+Warrior picked up a Sword
+Warrior picked up a Lance
+Warrior's active weapon is a Sword
+Warrior switched weapon.
+Warrior's active weapon is a Lance
+Warrior switched weapon.
+Warrior's active weapon is a Sword
+Warrior has a Sword in the bag.
+Warrior has a Lance in the bag.
+Game ended
+Game started
+A new Warrior has been created.
+A new Wizard has been created.
+A new Sword has been created.
+A new Lance has been created.
+A new Magic has been created.
+A new Sword has been created.
+Warrior picked up a Sword
+Warrior picked up a Lance
+Maximum number of weapons in bag is two weapons!
+Cannot pick up weapon: bag is full!
+Game ended
+Game started
+A new Warrior has been created.
+A new Wizard has been created.
+A new Sword has been created.
+A new Lance has been created.
+A new Magic has been created.
+A new Sword has been created.
+No weapon found for this hero, in his bag!
+Warrior cannot switch weapon: no weapons in the bag.
+Game ended
+Game started
+A new Warrior has been created.
+A new Wizard has been created.
+A new Sword has been created.
+A new Lance has been created.
+A new Magic has been created.
+A new Sword has been created.
+Warrior picked up a Sword
+Warrior picked up a Lance
+Warrior switched weapon.
+Game ended
+Game started
+A new Warrior has been created.
+A new Wizard has been created.
+A new Sword has been created.
+A new Lance has been created.
+A new Magic has been created.
+A new Sword has been created.
+Warrior picked up a Sword
+Warrior picked up a Lance
+Warrior's active weapon is a Sword
+Warrior switched weapon.
+Warrior's active weapon is a Lance
+Game ended

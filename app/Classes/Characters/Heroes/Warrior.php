@@ -2,10 +2,11 @@
 
 namespace App\Classes\Characters\Heroes;
 
-use App\Logs\Logger;
 use App\Classes\Characters\Heroes\Hero;
 use App\Classes\GameObjects\Weapon;
 use App\Classes\GameObjects\WeaponBag;
+use App\Exceptions\MaxWeaponNrExceededException;
+use App\Logs\Logger;
 
 class Warrior extends Hero {
 
@@ -24,10 +25,14 @@ class Warrior extends Hero {
 
     public function pickUpWeapon(Weapon $weapon): void
     {
-        $this->weaponBag->addWeapon($weapon);
-
-        $weaponName = $weapon->getWeaponClassName();
-        Logger::getInstance()->log($this->heroClassName . " picked up a " . $weaponName);
+        try {
+            $this->weaponBag->addWeapon($weapon);
+            $heroClassName = $this->getClassName();
+            $weaponName = $weapon->getWeaponClassName();
+            Logger::getInstance()->log($heroClassName . " picked up a " . $weaponName);
+        } catch (MaxWeaponNrExceededException $e) {
+            Logger::getInstance()->log("Cannot pick up weapon: bag is full!");
+        }
     }
 
     public function showAllWeapons(): void
@@ -57,8 +62,13 @@ class Warrior extends Hero {
 
     public function switchWeapon(): void
     {
-        $this->weaponBag->switchWeapon();
-        Logger::getInstance()->log($this->heroClassName . " switched weapon.");
+        try {
+            $this->weaponBag->switchWeapon();
+            Logger::getInstance()->log($this->heroClassName . " switched weapon.");
+        } catch (\App\Exceptions\NoWeaponException $e) {
+            Logger::getInstance()->log($this->heroClassName . " cannot switch weapon: no weapons in the bag.");
+            return;
+        }
     }
 
 }

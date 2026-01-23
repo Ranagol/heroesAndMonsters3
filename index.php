@@ -14,7 +14,8 @@ echo '<h1>Heroes and Monsters 3</h1>';
 
 Logger::getInstance()->log('Game started');
 
-
+// creating characters and game objects
+echo '<h2>Creating characters and game objects</h2>';
 $warrior = new Warrior();
 $wizard = new Wizard();
 
@@ -23,23 +24,25 @@ $lance = new Lance();
 $magic = new Magic();
 $sword2 = new Sword();
 
+// Warrior actions: picking up weapons, showing active weapon, switching weapon, dropping weapon
+echo '<h2>Warrior actions</h2>';
 $warrior->pickUpWeapon($sword);
 $warrior->pickUpWeapon($lance);
+// $warrior->pickUpWeapon($sword2); // this should log an error: bag is full
 
 $warrior->showActiveWeapon();
 $warrior->switchWeapon();
 $warrior->showActiveWeapon();
-$warrior->switchWeapon();
-$warrior->showActiveWeapon();
-$warrior->showAllWeapons();
-
-// var_dump($warrior->showAllWeapons());
+// $warrior->switchWeapon();
+// $warrior->showActiveWeapon();
+// $warrior->showAllWeapons();
 
 
 
 
-// throw new \App\Exceptions\NoWeaponException();
-// throw new \App\Exceptions\MaxWeaponNrExceededException();
+
+
+
 
 
 
