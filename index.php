@@ -21,10 +21,19 @@ $wizard = new Wizard();
 $sword = new Sword();
 $lance = new Lance();
 $magic = new Magic();
+$sword2 = new Sword();
 
 $warrior->pickUpWeapon($sword);
 $warrior->pickUpWeapon($lance);
-var_dump($warrior->showWeapons());
+
+$warrior->showActiveWeapon();
+$warrior->switchWeapon();
+$warrior->showActiveWeapon();
+$warrior->switchWeapon();
+$warrior->showActiveWeapon();
+$warrior->showAllWeapons();
+
+// var_dump($warrior->showAllWeapons());
 
 
 

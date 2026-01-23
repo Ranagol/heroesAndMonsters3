@@ -11,25 +11,54 @@ class Warrior extends Hero {
 
     private int $health = 100;
 
+    private string|null $heroClassName = null;
+
     private WeaponBag|null $weaponBag = null;
 
     public function __construct()
     {
         parent::__construct();
         $this->weaponBag = new WeaponBag();
+        $this->heroClassName = $this->getClassName();
     }
 
-    public function pickUpWeapon(Weapon $weapon): void//TODO I stopped here, the topic is picking up the weapon
+    public function pickUpWeapon(Weapon $weapon): void
     {
         $this->weaponBag->addWeapon($weapon);
-        $heroClassName = $this->getClassName();
+
         $weaponName = $weapon->getWeaponClassName();
-        Logger::getInstance()->log($heroClassName . " picked up a " . $weaponName);
+        Logger::getInstance()->log($this->heroClassName . " picked up a " . $weaponName);
     }
 
-    public function showWeapons(): array
+    public function showAllWeapons(): void
     {
-        return $this->weaponBag->getWeapons();
+        $allWeapons = $this->weaponBag->getWeapons();
+        if (count($allWeapons) == 0) {
+            Logger::getInstance()->log($this->heroClassName . " has no weapons in the bag.");
+            return;
+        }
+        foreach ($allWeapons as $weapon) {
+            $weaponName = $weapon->getWeaponClassName();
+            Logger::getInstance()->log($this->heroClassName . " has a " . $weaponName . " in the bag.");
+        }
+    }
+
+    public function showActiveWeapon(): void
+    {
+        // return $this->weaponBag->getActiveWeapon();
+        $activeWeapon = $this->weaponBag->getActiveWeapon();
+        if (!$activeWeapon) {
+            Logger::getInstance()->log($this->heroClassName . " has no active weapon.");
+            return;
+        }
+        $weaponName = $activeWeapon->getWeaponClassName();
+        Logger::getInstance()->log($this->heroClassName . "'s active weapon is a " . $weaponName);
+    }
+
+    public function switchWeapon(): void
+    {
+        $this->weaponBag->switchWeapon();
+        Logger::getInstance()->log($this->heroClassName . " switched weapon.");
     }
 
 }

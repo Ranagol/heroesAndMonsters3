@@ -30,8 +30,12 @@ class WeaponBag extends GameObject {
         }
     }
 
-    public function getActiveWeapon(): Weapon 
+    public function getActiveWeapon(): Weapon | null 
     {
+        if (count($this->weapons) == 0) {
+            return null;
+        }
+    
         return $this->weapons[$this->activeWeaponIndex];
     }
 
