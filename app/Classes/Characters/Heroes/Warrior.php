@@ -35,6 +35,18 @@ class Warrior extends Hero {
         }
     }
 
+    public function dropWeapon(): Weapon|null
+    {
+        try {
+            $removedActiveWeapon = $this->weaponBag->removeActiveWeapon();
+            Logger::getInstance()->log($this->heroClassName . " dropped his " . $removedActiveWeapon->getWeaponClassName());
+            return $removedActiveWeapon;
+        } catch (\Throwable $th) {
+            Logger::getInstance()->log($this->heroClassName . " cannot drop weapon: no weapons in the bag.");
+            return null;
+        }
+    }
+
     public function showAllWeapons(): void
     {
         $allWeapons = $this->weaponBag->getWeapons();

@@ -30,6 +30,27 @@ class WeaponBag extends GameObject {
         }
     }
 
+    /**
+     * Removes and returns the active weapon from the bag.
+     *
+     * @return Weapon
+     */
+    public function removeActiveWeapon(): Weapon
+    {
+        if (count($this->weapons) == 0) {
+            throw new NoWeaponException();
+        }
+
+        //Get the active weapon
+        $activeWeapon = $this->weapons[$this->activeWeaponIndex];
+
+        //Remove the active weapon from the weapons array
+        array_splice($this->weapons, $this->activeWeaponIndex, 1);
+
+        return $activeWeapon;
+
+    }
+
     public function getActiveWeapon(): Weapon | null 
     {
         if (count($this->weapons) == 0) {
