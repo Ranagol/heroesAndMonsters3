@@ -12,6 +12,9 @@ class FightManager {
 
     private Monster $monster;
 
+    //TODO make this figher1, fighter2 and make fight more generic
+    //they should attack with the same function name, and the damage amount should be calculated 
+    //also with the same function name???
     public function __construct(Hero $hero, Monster $monster)
     {
         $this->hero = $hero;
@@ -23,10 +26,59 @@ class FightManager {
         echo "The fight begins between Hero and Monster!" . PHP_EOL;
 
         while($this->hero->isAlive() && $this->monster->isAlive()) {
-           $this->hero->decreaseHealth(30);
-           $this->monster->decreaseHealth(50);
-        }
 
+            $attacker = $this->whoWillAttack();
+
+            if ($attacker instanceof Hero) {
+
+                //Hero attacks, monster got hurt
+                $this->monster->decreaseHealth(20);
+
+
+
+
+
+                
+            } else {
+                $this->monsterAttacks();
+            }
+        }
+        
+        $this->announceWinner();
+    }
+
+    private function whoWillAttack(): Hero|Monster
+    {
+        //Get random number between 0 and 100
+        $rand = rand(0, 100);
+
+        if ($rand <= 50) {
+            return $this->hero;
+        } else {
+            return $this->monster;
+        }
+    }
+
+    private function monsterAttacks(): void
+    {
+        $monsterAttack = $this->monster->getAttackType();
+        $attackType = $monsterAttack['attackType'];
+        $damage = $monsterAttack['damage'];
+        $this->hero->decreaseHealth($damage);
+        Logger::getInstance()->log(
+            $this->monster->getClassName() 
+            . " used " 
+            . $attackType 
+            . " and caused " 
+            . $damage 
+            . " damage to " 
+            . $this->hero->getClassName() 
+            . "."
+        );
+    }
+
+    private function announceWinner(): void
+    {
         if ($this->hero->isAlive()) {
             
             Logger::getInstance()->log(
@@ -36,11 +88,15 @@ class FightManager {
                 . "!"
             );
         } else {
-            Logger::getInstance()->log("Monster won the fight!");
+            Logger::getInstance()->log(
+                $this->monster->getClassName() 
+                . " defeated " 
+                . $this->hero->getClassName() 
+                . "!"
+            );
         }
 
         echo "The fight has ended." . PHP_EOL;
-
     }
     
 }
