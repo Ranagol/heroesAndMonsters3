@@ -39,17 +39,17 @@ $spider = new Spider();
  * Warrior actions: picking up weapons, showing active weapon, switching weapon, dropping weapon
  */
 echo '<h2>Warrior actions</h2>';
-// $warrior->pickUpWeapon($sword);
+$warrior->pickUpWeapon($sword);
 $warrior->pickUpWeapon($lance);
-// $warrior->showActiveWeapon();
-// $warrior->switchWeapon();
-// $warrior->showActiveWeapon();
-// $warrior->switchWeapon();
-// $warrior->showActiveWeapon();
-// $warrior->showAllWeapons();
+$warrior->showActiveWeapon();
+$warrior->switchWeapon();
+$warrior->showActiveWeapon();
+$warrior->switchWeapon();
+$warrior->showActiveWeapon();
+$warrior->showAllWeapons();
 
-// $droppedWeapon = $warrior->dropWeapon();
-// $warrior->showAllWeapons();
+$droppedWeapon = $warrior->dropWeapon();
+$warrior->showAllWeapons();
 
 /**
  * Wizard learns new magic
@@ -58,9 +58,17 @@ echo '<h2>Wizard actions</h2>';
 $wizard->learnMagic($magic);
 
 /**
- * Fight
+ * Fight 1
  */
-echo '<h2>The epic fight</h2>';
+echo '<h2>The epic fight Wizard vs Spider</h2>';
+$fightManager = new FightManager($wizard, $spider);
+$fightManager->fight();
+
+
+/**
+ * Fight 2
+ */
+echo '<h2>The epic fight Warrior vs Dragon</h2>';
 $fightManager = new FightManager($warrior, $dragon);
 $fightManager->fight();
 

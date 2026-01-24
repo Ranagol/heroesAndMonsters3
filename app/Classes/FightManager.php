@@ -30,28 +30,11 @@ class FightManager {
             $attacker = $this->whoWillAttack();
 
             if ($attacker instanceof Hero) {
-
-                //Hero attacks, monster got hurt
-                // $this->monster->decreaseHealth(20);
-                $heroAttack = $this->hero->getAttackType();
-                $attackType = $heroAttack['attackType'];
-                $damage = $heroAttack['damage'];
-                $this->monster->decreaseHealth($damage);
-                Logger::getInstance()->log(
-                    $this->hero->getClassName() 
-                    . " used " 
-                    . $attackType 
-                    . " and caused " 
-                    . $damage 
-                    . " damage to " 
-                    . $this->monster->getClassName() 
-                    . "."
-                );
+                $this->heroAttacks();
             } else {
                 $this->monsterAttacks();
             }
         }
-        
         $this->announceWinner();
     }
 
@@ -65,6 +48,24 @@ class FightManager {
         } else {
             return $this->monster;
         }
+    }
+
+    private function heroAttacks(): void
+    {
+        $heroAttack = $this->hero->getAttackType();
+        $attackType = $heroAttack['attackType'];
+        $damage = $heroAttack['damage'];
+        $this->monster->decreaseHealth($damage);
+        Logger::getInstance()->log(
+            $this->hero->getClassName() 
+            . " used " 
+            . $attackType 
+            . " and caused " 
+            . $damage 
+            . " damage to " 
+            . $this->monster->getClassName() 
+            . "."
+        );
     }
 
     private function monsterAttacks(): void
