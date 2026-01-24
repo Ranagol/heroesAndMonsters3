@@ -83,5 +83,21 @@ class Warrior extends Hero {
         }
     }
 
-
+    public function getAttackType(): array
+    {
+        $activeWeapon = $this->weaponBag->getActiveWeapon();
+        if (!$activeWeapon) {
+            return [
+                'attackType' => 'Unarmed',
+                'damage' => 1
+            ];
+        } else {
+            $attackType = $activeWeapon->getClassName();
+            $damage = $activeWeapon->getDamage();
+            return [
+                'attackType' => $attackType,
+                'damage' => $damage
+            ];
+        }
+    }
 }

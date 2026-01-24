@@ -39,7 +39,7 @@ $spider = new Spider();
  * Warrior actions: picking up weapons, showing active weapon, switching weapon, dropping weapon
  */
 echo '<h2>Warrior actions</h2>';
-$warrior->pickUpWeapon($sword);
+// $warrior->pickUpWeapon($sword);
 $warrior->pickUpWeapon($lance);
 // $warrior->showActiveWeapon();
 // $warrior->switchWeapon();

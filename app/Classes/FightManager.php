@@ -32,13 +32,21 @@ class FightManager {
             if ($attacker instanceof Hero) {
 
                 //Hero attacks, monster got hurt
-                $this->monster->decreaseHealth(20);
-
-
-
-
-
-                
+                // $this->monster->decreaseHealth(20);
+                $heroAttack = $this->hero->getAttackType();
+                $attackType = $heroAttack['attackType'];
+                $damage = $heroAttack['damage'];
+                $this->monster->decreaseHealth($damage);
+                Logger::getInstance()->log(
+                    $this->hero->getClassName() 
+                    . " used " 
+                    . $attackType 
+                    . " and caused " 
+                    . $damage 
+                    . " damage to " 
+                    . $this->monster->getClassName() 
+                    . "."
+                );
             } else {
                 $this->monsterAttacks();
             }
