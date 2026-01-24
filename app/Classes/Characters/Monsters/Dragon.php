@@ -16,6 +16,14 @@ class Dragon extends Monster {
         'damage' => 5
     ];
 
+    /**
+     * Every character, when attacks, must return an array with attackType and damage.
+     *
+     * @return array{
+     *   attackType: string,
+     *   damage: int
+     *  }
+     */
     public function getAttackType(): array
     {
         $attackType = $this->randomGenerator();

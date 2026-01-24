@@ -12,6 +12,11 @@ class Wizard extends Hero {
 
     protected int $health = 150;
 
+    /**
+     * When a Wizard learns a magic, it is stored here
+     *
+     * @var Magic|null
+     */
     private Magic|null $magic = null;
 
     public function __construct()
@@ -25,6 +30,14 @@ class Wizard extends Hero {
         Logger::getInstance()->log("Wizard learned new magic.");
     }
 
+    /**
+     * Every character, when attacks, must return an array with attackType and damage.
+     *
+     * @return array{
+     *   attackType: string,
+     *   damage: int
+     *  }
+     */
     public function getAttackType(): array
     {
         if ($this->magic === null) {
@@ -42,6 +55,13 @@ class Wizard extends Hero {
         }
     }
 
+    /**
+     * This is here only because of the task. It was stated, that and exception must be thrown, when
+     * the Wizard tries to pick up a weapon.
+     *
+     * @param Weapon $weapon
+     * @return void
+     */
     public function pickUpWeapon(Weapon $weapon): void
     {
         try {

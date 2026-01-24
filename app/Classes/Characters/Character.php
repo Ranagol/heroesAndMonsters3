@@ -4,6 +4,9 @@ namespace App\Classes\Characters;
 
 use App\Classes\GameObjects\GameObject;
 
+/**
+ * Characters can be Heroes and Monsters (living beings, not objects)
+ */
 class Character extends GameObject {
 
     protected int $health;

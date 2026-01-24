@@ -2,9 +2,11 @@
 
 namespace App\Classes\Characters\Heroes;
 
+use \App\Exceptions\NoWeaponException;
 use App\Classes\Characters\Heroes\Hero;
 use App\Classes\GameObjects\Weapon;
 use App\Classes\GameObjects\WeaponBag;
+use App\Exceptions\CantSwitchOneWeaponException;
 use App\Exceptions\MaxWeaponNrExceededException;
 use App\Logs\Logger;
 
@@ -62,7 +64,6 @@ class Warrior extends Hero {
 
     public function showActiveWeapon(): void
     {
-        // return $this->weaponBag->getActiveWeapon();
         $activeWeapon = $this->weaponBag->getActiveWeapon();
         if (!$activeWeapon) {
             Logger::getInstance()->log($this->heroClassName . " has no active weapon.");
@@ -72,18 +73,34 @@ class Warrior extends Hero {
         Logger::getInstance()->log($this->heroClassName . "'s active weapon is a " . $weaponName);
     }
 
+    /**
+     * Warrior can swith active weapon to another weapon, ih he has two weapons in his WeaponBag.
+     *
+     * @return void
+     */
     public function switchWeapon(): void
     {
         try {
             $this->weaponBag->switchWeapon();
             Logger::getInstance()->log($this->heroClassName . " switched weapon.");
-        } catch (\App\Exceptions\NoWeaponException $e) {
+        } catch (NoWeaponException $e) {
             Logger::getInstance()->log($this->heroClassName . " cannot switch weapon: no weapons in the bag.");
+            return;
+        } catch (CantSwitchOneWeaponException $e) {
+            Logger::getInstance()->log($this->heroClassName . " cannot switch weapon: only one weapon in the bag.");
             return;
         }
     }
 
-    public function getAttackType(): array
+    /**
+     * Every character, when attacks, must return an array with attackType and damage.
+     *
+     * @return array{
+     *   attackType: string,
+     *   damage: int
+     *  }
+     */
+    public function getAttackType(): array//can I specify here the structure of the returned array?
     {
         $activeWeapon = $this->weaponBag->getActiveWeapon();
         if (!$activeWeapon) {

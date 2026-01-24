@@ -2,9 +2,14 @@
 
 namespace App\Classes\GameObjects;
 
+use App\Exceptions\CantSwitchOneWeaponException;
 use App\Exceptions\MaxWeaponNrExceededException;
 use App\Exceptions\NoWeaponException;
 
+/**
+ * All Heroes have a WeaponBag. They can store here max 2 weapons.
+ * Sidenote: Wizzard is not able to pick up weapons.
+ */
 class WeaponBag extends GameObject {
 
     /**
@@ -21,6 +26,13 @@ class WeaponBag extends GameObject {
         //this is deliberatly empty, we don't want to log every WeaponBag creation
     }
 
+    /**
+     * Adds a weapon to the bag.
+     * 
+     * @throws MaxWeaponNrExceededException
+     * @param Weapon $weapon
+     * @return void
+     */
     public function addWeapon(Weapon $weapon): void 
     {
         if (count($this->weapons) < $this->maxNumberOfWeapons) {
@@ -34,6 +46,7 @@ class WeaponBag extends GameObject {
      * Removes and returns the active weapon from the bag.
      *
      * @return Weapon
+     * @throws NoWeaponException
      */
     public function removeActiveWeapon(): Weapon
     {
@@ -51,6 +64,11 @@ class WeaponBag extends GameObject {
 
     }
 
+    /**
+     * Returns active weapon or null (if there is no weapon in WeaponBag)
+     *
+     * @return void
+     */
     public function getActiveWeapon(): Weapon | null 
     {
         if (count($this->weapons) == 0) {
@@ -60,14 +78,26 @@ class WeaponBag extends GameObject {
         return $this->weapons[$this->activeWeaponIndex];
     }
 
+    /**
+     * Hero can with this function switch to the next weapon in the bag.
+     * 
+     * @throws NoWeaponException
+     * @throws CantSwitchOneWeaponException
+     * @return void
+     */
     public function switchWeapon(): void 
     {
         if (count($this->weapons) == 0) {
             throw new NoWeaponException();
         }
+
+        if(count($this->weapons) == 1) {
+            throw new CantSwitchOneWeaponException();
+        }
         
         /**
          * This will reverse items in array. ['apple', 'orange'] will become ['orange', 'apple']
+         * We need to do this, because the active weapon is always at index 0 in the weapons array.
          */
         $this->weapons = array_reverse($this->weapons);
     }

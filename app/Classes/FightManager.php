@@ -6,15 +6,16 @@ use App\Classes\Characters\Heroes\Hero;
 use App\Classes\Characters\Monsters\Monster;
 use App\Logs\Logger;
 
+/**
+ * This class manages the fight between a Hero and a Monster. The fight lasts, till the Hero or Monster
+ * Health point doesn't sink to zero. In every round a random generator decides who can attack.
+ */
 class FightManager {
 
     private Hero $hero;
 
     private Monster $monster;
 
-    //TODO make this figher1, fighter2 and make fight more generic
-    //they should attack with the same function name, and the damage amount should be calculated 
-    //also with the same function name???
     public function __construct(Hero $hero, Monster $monster)
     {
         $this->hero = $hero;
@@ -38,6 +39,11 @@ class FightManager {
         $this->announceWinner();
     }
 
+    /**
+     * Decides randomly, who can attack in the given round, the Hero or the Monster.
+     *
+     * @return Hero|Monster
+     */
     private function whoWillAttack(): Hero|Monster
     {
         //Get random number between 0 and 100
@@ -86,6 +92,11 @@ class FightManager {
         );
     }
 
+    /**
+     * When the fight is over, this function announces who is the winner.
+     *
+     * @return void
+     */
     private function announceWinner(): void
     {
         if ($this->hero->isAlive()) {
