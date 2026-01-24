@@ -56,6 +56,7 @@ $warrior->showAllWeapons();
  */
 echo '<h2>Wizard actions</h2>';
 $wizard->learnMagic($magic);
+$wizard->pickUpWeapon($sword); 
 
 /**
  * Fight 1

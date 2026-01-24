@@ -1,0 +1,114 @@
+TASK
+
+INSTRUCTIONS:
+The task may be written in one of the following programming languages: PHP, JavaScript, Python, Java, Ruby, or C#. It is expected to be implemented in accordance with the basic principles of Object-Oriented Programming (OOP).
+
+The main goal of this task is to demonstrate a good understanding of OOP principles. The use of architectural and design patterns is desirable. It is not essential that the program fully works.
+
+The maximum allowed time is 3 hours. The candidate may submit the task after 1 hour if they believe they have demonstrated sufficient knowledge. After 3 hours, the task should be submitted even if it is not completed.
+
+The task should be implemented without asking additional questions.
+
+
+NOTES:
+- Do NOT create a database
+- Do NOT write HTML/CSS code
+- The emphasis is on OOP
+- If possible in the chosen language, implement:
+  * Inheritance
+  * Singleton pattern
+    - Optionally use other design patterns (Factory Method, Decorator)
+  * Polymorphism
+  * Exception handling
+
+
+TASK DESCRIPTION:
+
+Your task is to create a game.
+
+1) HEROES
+There are two types of heroes, each with a defined amount of health:
+- Wizard: 150 health
+- Swordsman: 100 health
+
+
+2) WEAPONS
+Each hero can pick up and throw weapons:
+- Sword (wizard cannot pick it up – throw an exception)
+- Spear (wizard cannot pick it up – throw an exception)
+- Spell (only the wizard can learn it)
+
+
+3) BACKPACK & WEAPON HANDLING
+- A hero can store weapons in a backpack
+- Only one weapon can be active at a time
+- Weapons are switched by index in an array
+- If the backpack is empty, throw a NoWeaponException
+- When one hero throws a weapon, another hero can pick it up
+- The first hero automatically takes the next available weapon from the backpack
+
+
+4) BACKPACK LIMIT
+- Maximum number of weapons in the backpack is 2
+- If the player tries to add more, throw an Exception
+
+
+5) MONSTERS
+The game includes monsters:
+- Dragon
+- Spider
+
+
+6) MONSTER ATTACKS
+Each monster has different attacks, chosen randomly:
+
+Dragon:
+- Hit: deals 5 health damage
+- Fire breath: deals 20 health damage
+
+Spider:
+- Hit: deals 5 health damage
+- Bite: deals 8 health damage
+
+
+7) HERO ATTACKS
+Heroes deal damage to monsters as follows:
+- Wizard + Spell: 20 health damage
+- Swordsman + Sword: 10 health damage
+- Swordsman + Spear: 15 health damage
+
+
+8) SIMULATIONS REQUIRED
+
+Combat:
+- Generate a random number between 0 and 100
+- If the number is below 50, the hero attacks
+- If the number is above 50, the monster attacks
+- When one participant’s health reaches 0, the other is declared the winner
+
+Weapon handling:
+- Simulate a hero picking up a weapon
+- Simulate a hero throwing a weapon
+- Simulate another hero picking up the thrown weapon
+
+
+9) LOGGING (WRITE TO FILE)
+
+Log the following actions:
+
+- Each attack and its damage:
+  [attacker] attacked [victim] using [weapon]
+
+- Weapon pickup:
+  [hero] picked up weapon [weapon]
+
+- Winner announcement:
+  [hero/monster] won the duel against [hero/monster]
+
+
+SUBMISSION:
+Send the completed task (or whatever you manage to complete within the given time) as a ZIP file or via Google Drive, WeTransfer, or a Git repository link to:
+
+jobs@vivifyideas.com
+
+YOU’RE DONE!

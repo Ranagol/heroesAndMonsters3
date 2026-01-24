@@ -4,6 +4,8 @@ namespace App\Classes\Characters\Heroes;
 
 use App\Classes\Characters\Heroes\Hero;
 use App\Classes\GameObjects\Magic;
+use App\Classes\GameObjects\Weapon;
+use App\Exceptions\WizardCanNotUseWeaponException;
 use App\Logs\Logger;
 
 class Wizard extends Hero {
@@ -37,6 +39,15 @@ class Wizard extends Hero {
                 'attackType' => $attackType,
                 'damage' => $damage
             ];
+        }
+    }
+
+    public function pickUpWeapon(Weapon $weapon): void
+    {
+        try {
+            throw new WizardCanNotUseWeaponException();
+        } catch (WizardCanNotUseWeaponException $e) {
+            Logger::getInstance()->log("Wizard tried to pick up a weapon, which is forbidden.");
         }
     }
 

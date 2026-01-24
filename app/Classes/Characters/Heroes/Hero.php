@@ -3,6 +3,7 @@
 namespace App\Classes\Characters\Heroes;
 
 use App\Classes\Characters\Character;
+use App\Classes\GameObjects\Weapon;
 
 abstract class Hero extends Character {
 
@@ -12,5 +13,7 @@ abstract class Hero extends Character {
     }
 
     abstract public function getAttackType(); 
+
+    abstract public function pickUpWeapon(Weapon $weapon): void;
 
 }
