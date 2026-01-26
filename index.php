@@ -1,11 +1,11 @@
 <?php
 
+
 use App\Classes\Characters\Heroes\Warrior;
 use App\Classes\Characters\Heroes\Wizard;
 use App\Classes\Characters\Monsters\Dragon;
 use App\Classes\Characters\Monsters\Spider;
 use App\Classes\FightManager;
-use App\Classes\GameObjects\GameObject;
 use App\Classes\GameObjects\Lance;
 use App\Classes\GameObjects\Magic;
 use App\Classes\GameObjects\Sword;

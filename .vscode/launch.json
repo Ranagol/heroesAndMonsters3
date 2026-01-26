@@ -2,24 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Listen for Xdebug",
+      "name": "Listen for Xdebug (Docker)",
       "type": "php",
       "request": "launch",
       "port": 9003,
+      "hostname": "0.0.0.0",
       "pathMappings": {
-        "/home/andor/juniorExams/heroesAndMonsters3": "${workspaceFolder}"
-      }
-    },
-    {
-      "name": "Launch index.php (CLI)",
-      "type": "php",
-      "request": "launch",
-      "program": "${workspaceFolder}/index.php",
-      "cwd": "${workspaceFolder}",
-      "runtimeExecutable": "php",
-      "port": 9003,
-      "pathMappings": {
-        "/home/andor/juniorExams/heroesAndMonsters3": "${workspaceFolder}"
+        "/var/www/html": "${workspaceFolder}"
       }
     }
   ]
