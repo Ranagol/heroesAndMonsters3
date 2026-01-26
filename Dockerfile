@@ -28,8 +28,11 @@ COPY . .
 # Copy Xdebug config
 COPY docker/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
-# Expose PHP built-in server port
+# Hey Docker, this PHP will listen on port 8000, inside the container
 EXPOSE 8000
 
-# Start PHP built-in server
+# This is the command Docker runs by default when the container starts:
+# php -S 0.0.0.0:8000 index.php
+# This means "start the PHP built-in web server, listen on all interfaces 
 CMD ["php", "-S", "0.0.0.0:8000", "index.php"]
+
