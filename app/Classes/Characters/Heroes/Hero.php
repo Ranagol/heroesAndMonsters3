@@ -18,5 +18,4 @@ abstract class Hero extends Character {
     abstract public function getAttackType(); 
 
     abstract public function pickUpWeapon(Weapon $weapon): void;
-
 }
