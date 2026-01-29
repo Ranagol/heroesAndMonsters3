@@ -117,6 +117,11 @@ docker compose logs -f
 docker exec heroes_php <command>
 ```
 
+### Open an interactive bash in container
+```bash
+docker-compose exec php bash
+```
+
 ### Restart container
 ```bash
 docker compose restart
