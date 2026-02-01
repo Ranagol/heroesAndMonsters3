@@ -41,15 +41,15 @@ class FightManager {
 
     /**
      * Decides randomly, who can attack in the given round, the Hero or the Monster.
-     *
+     * 
      * @return Hero|Monster
      */
     private function whoWillAttack(): Hero|Monster
     {
         //Get random number between 0 and 100
-        $rand = rand(0, 100);
+        $randomNumber = rand(0, 100);
 
-        if ($rand <= 50) {
+        if ($randomNumber <= 50) {
             return $this->hero;
         } else {
             return $this->monster;
