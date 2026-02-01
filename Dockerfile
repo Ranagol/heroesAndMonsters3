@@ -1,11 +1,13 @@
-FROM php:8.5-cli
+FROM php:8.4-cli
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     unzip \
     libzip-dev \
-    && docker-php-ext-install zip
+    libxml2-dev \
+    libonig-dev \
+    && docker-php-ext-install zip dom mbstring xml xmlwriter
 
 # Install Xdebug
 RUN pecl install xdebug \

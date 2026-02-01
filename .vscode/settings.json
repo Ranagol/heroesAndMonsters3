@@ -1,0 +1,7 @@
+{
+    "phpunit.command": "bash .vscode/phpunit-docker.sh",
+    "phpunit.args": [
+        "--colors=always",
+        "--testdox"
+    ]
+}

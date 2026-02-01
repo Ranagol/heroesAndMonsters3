@@ -94,13 +94,14 @@ class Warrior extends Hero {
 
     /**
      * Every character, when attacks, must return an array with attackType and damage.
+     * This is how the app knows what type of attack it is and how much damage to apply to the opponent.
      *
      * @return array{
      *   attackType: string,
      *   damage: int
      *  }
      */
-    public function getAttackType(): array//can I specify here the structure of the returned array?
+    public function getAttackType(): array
     {
         $activeWeapon = $this->weaponBag->getActiveWeapon();
         if (!$activeWeapon) {
@@ -118,3 +119,6 @@ class Warrior extends Hero {
         }
     }
 }
+
+
+

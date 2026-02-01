@@ -12,3 +12,8 @@ services:
       - "host.docker.internal:host-gateway" #Docker alone, automatically find the IP of the host machine, and uses it
     environment:
       PHP_IDE_CONFIG: "serverName=heroes"
+
+
+
+
+
