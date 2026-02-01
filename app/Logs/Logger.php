@@ -51,6 +51,11 @@ class Logger {
 
     private function writeToFile(String $text): void
     {
-        file_put_contents(self::$pathForLogs, $text . PHP_EOL, FILE_APPEND);
+        file_put_contents(self::getPathForLogs(), $text . PHP_EOL, FILE_APPEND);
+    }
+
+    public static function getPathForLogs(): string
+    {
+        return self::$pathForLogs;
     }
 }
