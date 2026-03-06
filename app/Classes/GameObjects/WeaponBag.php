@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Classes\GameObjects;
 
 use App\Exceptions\CantSwitchOneWeaponException;
@@ -13,7 +15,7 @@ use App\Exceptions\NoWeaponException;
 class WeaponBag extends GameObject {
 
     /**
-     * @var array Weapon[]
+     * @var Weapon[]
      */
     public array $weapons = [];
 
@@ -67,7 +69,7 @@ class WeaponBag extends GameObject {
     /**
      * Returns active weapon or null (if there is no weapon in WeaponBag)
      *
-     * @return void
+     * @return Weapon | null
      */
     public function getActiveWeapon(): Weapon | null 
     {
@@ -102,6 +104,11 @@ class WeaponBag extends GameObject {
         $this->weapons = array_reverse($this->weapons);
     }
 
+    /**
+     * Returns all weapons in the bag.
+     *
+     * @return Weapon[]
+     */
     public function getWeapons(): array 
     {
         return $this->weapons;
@@ -109,3 +116,4 @@ class WeaponBag extends GameObject {
 
 
 }
+

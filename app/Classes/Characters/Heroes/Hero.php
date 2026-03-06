@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Classes\Characters\Heroes;
 
 use App\Classes\Characters\Character;
@@ -15,7 +17,10 @@ abstract class Hero extends Character {
         parent::__construct();
     }
 
-    abstract public function getAttackType(); 
+    /**
+     * @return array{attackType: string, damage: int}
+     */
+    abstract public function getAttackType(): array; 
 
     abstract public function pickUpWeapon(Weapon $weapon): void;
 }

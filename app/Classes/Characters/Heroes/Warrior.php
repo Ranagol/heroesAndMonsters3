@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Classes\Characters\Heroes;
 
 use \App\Exceptions\NoWeaponException;
@@ -16,7 +18,7 @@ class Warrior extends Hero {
 
     private string|null $heroClassName = null;
 
-    private WeaponBag|null $weaponBag = null;
+    private WeaponBag $weaponBag;
 
     public function __construct()
     {

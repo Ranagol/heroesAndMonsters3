@@ -1,10 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Classes\GameObjects;
 
 abstract class Weapon extends GameObject {
-
-    private int $damage;
 
     public function getWeaponClassName(): string
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Classes\Characters\Monsters;
 
 use App\Classes\Characters\Character;
@@ -11,10 +13,6 @@ abstract class Monster extends Character {
 
     protected int $health;
 
-    public array $attack1;
-
-    public array $attack2;
-
     /**
      * This will be used for all Monsters, to decide whether they will use attack1 or attack2
      *
@@ -25,6 +23,9 @@ abstract class Monster extends Character {
         return rand(1,2);
     }
 
+    /**
+     * @return array{attackType: string, damage: int}
+     */
     abstract public function getAttackType(): array;
 
 }

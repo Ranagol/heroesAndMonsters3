@@ -1,16 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Classes\Characters\Monsters;
 
 class Dragon extends Monster {
 
     protected int $health = 150;
 
+    /** @var array{attackType: string, damage: int} */
     public array $attack1 = [
         'attackType' => 'Fire Breath', 
         'damage' => 20
     ];
 
+    /** @var array{attackType: string, damage: int} */
     public array $attack2 = [
         'attackType' => 'Hitting',
         'damage' => 5

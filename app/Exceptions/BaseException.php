@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Exceptions;
 
 use Exception;
@@ -11,17 +13,17 @@ class BaseException extends Exception
      * In this constructor we set up that for every exception when it is created,
      * it will be logged immediatelly into the logs.
      *
-     * @param string|null $message      human-readable error message
-     * @param integer $code             numeric error code (often HTTP status)
+     * @param string $message      human-readable error message
+     * @param int $code             numeric error code (often HTTP status)
      * @param \Throwable|null $previous previous throwable for exception chaining
      */
     public function __construct(
-        string|null $message = null, 
+        string $message = '', 
         int $code = 0, 
-        \Throwable|null $previous = null)
+        ?\Throwable $previous = null)
     {
         parent::__construct($message, $code, $previous);
-        Logger::getInstance()->log($message ?? 'An error occurred.');
+        Logger::getInstance()->log($message ?: 'An error occurred.');
     }
 
 }
